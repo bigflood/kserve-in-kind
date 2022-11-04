@@ -1,0 +1,18 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "sklearn-iris"
+  namespace: "lab"
+  annotations:
+    autoscaling.knative.dev/target: "1"
+spec:
+  predictor:
+    minReplicas: 1
+    maxReplicas: 5
+    batcher:
+      maxBatchSize: 8
+      maxLatency: 50
+    model:
+      modelFormat:
+        name: sklearn
+      storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
