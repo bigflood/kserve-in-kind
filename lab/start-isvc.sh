@@ -12,7 +12,7 @@ docker push localhost:5001/custom_transformer:0.2
 
 echo "create isvc.."
 
-"$BIN_DIR/kubectl" apply -f sklearn-iris-isvc.yaml
-"$BIN_DIR/kubectl" wait --for=condition=Ready --timeout=60s -n lab isvc/sklearn-iris
+"$KUBECTL_CLI" apply -f sklearn-iris-isvc.yaml
+"$KUBECTL_CLI" wait --for=condition=Ready --timeout=60s -n lab isvc/sklearn-iris
 
 poetry run python infer-req.py --delay 0.1 --namespace lab

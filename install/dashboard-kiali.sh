@@ -7,4 +7,4 @@ cd "$SCRIPT_DIR"
 
 source vars.sh
 
-"$SCRIPT_DIR/bin/istioctl" dashboard kiali
+"$ISTIO_CLI" dashboard kiali

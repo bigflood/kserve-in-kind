@@ -7,4 +7,4 @@ cd "$SCRIPT_DIR"
 
 source vars.sh
 
-"$SCRIPT_DIR/bin/istioctl" dashboard grafana
+"$ISTIO_CLI" dashboard grafana

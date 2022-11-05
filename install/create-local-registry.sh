@@ -25,7 +25,7 @@ fi
 
 # Document the local registry
 # https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/generic/1755-communicating-a-local-registry
-cat <<EOF | "$BIN_DIR/kubectl" apply -f -
+cat <<EOF | "$KUBECTL_CLI" apply -f -
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -38,6 +38,6 @@ data:
 EOF
 
 # https://github.com/knative/docs/blob/release-0.21/docs/serving/tag-resolution.md#skipping-tag-resolution
-"$BIN_DIR/kubectl" patch -n knative-serving cm config-deployment \
+"$KUBECTL_CLI" patch -n knative-serving cm config-deployment \
     --type='json' \
     -p='[{"op":"add","path":"/data/registriesSkippingTagResolving","value":"localhost:5001"}]'

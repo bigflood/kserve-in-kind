@@ -7,6 +7,6 @@ cd "$SCRIPT_DIR"
 
 source ../install/vars.sh
 
-"$BIN_DIR/kubectl" apply -f lab.yaml
+"$KUBECTL_CLI" apply -f lab.yaml
 
 poetry install

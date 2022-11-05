@@ -12,3 +12,7 @@ export KSERVE_VERSION=v0.9.0
 export CERT_MANAGER_VERSION=v1.3.0
 export KUBECONFIG="$INSTALL_DIR/../.kubeconfig"
 export BIN_DIR="$INSTALL_DIR/bin"
+
+export KIND_CLI="$BIN_DIR/kind-$KIND_VER"
+export ISTIO_CLI="$BIN_DIR/istio-$ISTIO_VERSION_M"
+export KUBECTL_CLI="$BIN_DIR/kubectl-$K8S_VER"

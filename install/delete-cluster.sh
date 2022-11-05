@@ -5,4 +5,4 @@ set -eu -o pipefail
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd "$SCRIPT_DIR"
 
-"$SCRIPT_DIR/bin/kind" delete cluster --name kserve
+"$KIND_CLI" delete cluster --name kserve
