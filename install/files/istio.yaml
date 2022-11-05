@@ -6,6 +6,9 @@ spec:
     defaultConfig:
       tracing:
         sampling: 100
+  addonComponents:
+    pilot:
+      enabled: true
   # https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#GatewaySpec
   components:
     ingressGateways:
