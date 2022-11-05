@@ -50,6 +50,7 @@ echo "install kserve addons .."
 "$BIN_DIR/kubectl" apply -f https://raw.githubusercontent.com/istio/istio/release-$ISTIO_VERSION_M/samples/addons/prometheus.yaml
 "$BIN_DIR/kubectl" apply -f https://raw.githubusercontent.com/istio/istio/release-$ISTIO_VERSION_M/samples/addons/kiali.yaml
 "$BIN_DIR/kubectl" apply -f https://raw.githubusercontent.com/istio/istio/release-$ISTIO_VERSION_M/samples/addons/jaeger.yaml
+"$BIN_DIR/kubectl" apply -f https://raw.githubusercontent.com/istio/istio/release-$ISTIO_VERSION_M/samples/addons/grafana.yaml
 
 echo "create local registry .."
 ./create-local-registry.sh
