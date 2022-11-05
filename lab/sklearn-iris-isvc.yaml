@@ -16,3 +16,7 @@ spec:
       modelFormat:
         name: sklearn
       storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
+  transformer:
+    containers:
+    - image: localhost:5001/custom_transformer:0.2
+      name: kserve-container
