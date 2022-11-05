@@ -17,7 +17,7 @@
 
 ```
 ./lab/install.sh
-./start-isvc.sh
+./lab/start-isvc.sh
 ```
 
 ## Show kiali dashboard
