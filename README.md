@@ -20,14 +20,16 @@
 ./lab/start-isvc.sh
 ```
 
-## Show kiali dashboard
+## dashboards
 
 ```
 ./install/dashboard-kiali.sh
 ```
 
-## Show jaeger dashboard
-
 ```
 ./install/dashboard-jaeger.sh
+```
+
+```
+./install/dashboard-grafana.sh
 ```
