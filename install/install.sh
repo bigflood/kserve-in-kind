@@ -20,6 +20,9 @@ if [[ "$KIND_CLUSTER_EXISTS" == "" ]]; then
     "$BIN_DIR/kind" export kubeconfig --name kserve --kubeconfig "$KUBECONFIG"
 fi
 
+echo "create local registry .."
+./create-local-registry.sh
+
 echo "install istio .."
 "$BIN_DIR/istioctl" install -y -f "$SCRIPT_DIR/files/istio.yaml"
 
