@@ -20,9 +20,6 @@ if [[ "$KIND_CLUSTER_EXISTS" == "" ]]; then
     "$BIN_DIR/kind" export kubeconfig --name kserve --kubeconfig "$KUBECONFIG"
 fi
 
-echo "create local registry .."
-./create-local-registry.sh
-
 echo "install istio .."
 "$BIN_DIR/istioctl" install -y -f "$SCRIPT_DIR/files/istio.yaml"
 
@@ -53,3 +50,6 @@ echo "install kserve addons .."
 "$BIN_DIR/kubectl" apply -f https://raw.githubusercontent.com/istio/istio/release-$ISTIO_VERSION_M/samples/addons/prometheus.yaml
 "$BIN_DIR/kubectl" apply -f https://raw.githubusercontent.com/istio/istio/release-$ISTIO_VERSION_M/samples/addons/kiali.yaml
 "$BIN_DIR/kubectl" apply -f https://raw.githubusercontent.com/istio/istio/release-$ISTIO_VERSION_M/samples/addons/jaeger.yaml
+
+echo "create local registry .."
+./create-local-registry.sh

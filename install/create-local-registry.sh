@@ -38,6 +38,6 @@ data:
 EOF
 
 # https://github.com/knative/docs/blob/release-0.21/docs/serving/tag-resolution.md#skipping-tag-resolution
-"$BIN_DIR/kubectl" patch -n knative-serving cm config-deployment
+"$BIN_DIR/kubectl" patch -n knative-serving cm config-deployment \
     --type='json' \
     -p='[{"op":"add","path":"/data/registriesSkippingTagResolving","value":"localhost:5001"}]'
