@@ -7,7 +7,11 @@ cd "$SCRIPT_DIR"
 
 source ../install/vars.sh
 
-docker build -t localhost:5001/custom_transformer:0.2 -f custom_transformer.Dockerfile .
+docker build --platform linux/amd64 \
+    -t localhost:5001/custom_transformer:0.2 \
+    -f custom_transformer.Dockerfile \
+    .
+
 docker push localhost:5001/custom_transformer:0.2
 
 echo "create isvc.."
