@@ -7,7 +7,7 @@ metadata:
     autoscaling.knative.dev/target: "1"
 spec:
   predictor:
-    minReplicas: 1
+    minReplicas: 0
     maxReplicas: 5
     batcher:
       maxBatchSize: 8
@@ -17,6 +17,8 @@ spec:
         name: sklearn
       storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
   transformer:
+    minReplicas: 0
+    maxReplicas: 5
     containers:
     - image: localhost:5001/custom_transformer:0.2
       name: kserve-container

@@ -15,11 +15,20 @@ class CmdArgs:
     port: int = 30582
     input_file: str = "iris-input.json"
     domain: str = "example.com"
+    log_interval: int = 100
 
 
 def read_file(fn):
     with open(fn, "rb") as f:
         return f.read()
+
+
+def tooks_to_str(tooks):
+    if len(tooks) <= 10:
+        return " ".join(map("{:.05f}".format, tooks))
+    return tooks_to_str(tooks[:5]) \
+        + " .. " \
+        + tooks_to_str(tooks[-5:])
 
 
 def main():
@@ -45,7 +54,7 @@ def main():
             if i == 1 or resp.status_code != 200:
                 print("first resp:", resp, resp.json(), "took=", tooks)
                 tooks = []
-            elif i % 100 == 0:
+            elif i % args.log_interval == 0:
                 tooks.sort()
                 print(
                     f"{i=}: {resp.json()=}\n  "
@@ -57,9 +66,7 @@ def main():
                     + f"p95={np.percentile(tooks, 95):.05f}, "
                     + f"p99={np.percentile(tooks, 99):.05f}, "
                     + "\n  "
-                    + " ".join(map("{:.05f}".format, tooks[:5]))
-                    + " .. "
-                    + " ".join(map("{:.05f}".format, tooks[-5:]))
+                    + tooks_to_str(tooks)
                 )
                 tooks = []
 

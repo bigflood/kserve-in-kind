@@ -27,6 +27,6 @@ docker push localhost:5001/custom_model:$VER
 echo "create isvc.."
 
 "$KUBECTL_CLI" apply -f isvc-custom-model.yaml
-"$KUBECTL_CLI" wait --for=condition=Ready --timeout=60s -n lab isvc/custom-model
+# "$KUBECTL_CLI" wait --for=condition=Ready --timeout=60s -n lab isvc/custom-model
 
-poetry run python infer-req.py --delay 1.0 --namespace lab
+poetry run python infer-req.py --delay 1.0 --namespace lab --name custom-model --model custom-model

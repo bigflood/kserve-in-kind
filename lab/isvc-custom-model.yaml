@@ -7,7 +7,7 @@ metadata:
     version: v1
 spec:
   predictor:
-    minReplicas: 1
+    minReplicas: 0
     maxReplicas: 4
     scaleTarget: 5
     scaleMetric: rps
@@ -23,7 +23,7 @@ spec:
           port: 8080
           scheme: HTTP
   transformer:
-    minReplicas: 1
+    minReplicas: 0
     maxReplicas: 4
     scaleTarget: 5
     scaleMetric: rps
