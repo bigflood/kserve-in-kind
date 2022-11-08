@@ -42,19 +42,26 @@ def main():
             t2 = time.time()
             tooks.append(t2 - t1)
 
-            if i == 1:
+            if i == 1 or resp.status_code != 200:
                 print("first resp:", resp, resp.json(), "took=", tooks)
-
-            if i % 100 == 0:
+                tooks = []
+            elif i % 100 == 0:
+                tooks.sort()
                 print(
                     f"{i=}: {resp.json()=}\n  "
                     + "took: "
                     + f"avg={np.average(tooks):.05f}, "
                     + f"min={np.min(tooks):.05f}, "
                     + f"max={np.max(tooks):.05f}, "
-                    + f"p95={np.percentile(tooks, 0.95):.05f}, "
-                    + f"p99={np.percentile(tooks, 0.99):.05f}"
+                    + f"p90={np.percentile(tooks, 90):.05f}, "
+                    + f"p95={np.percentile(tooks, 95):.05f}, "
+                    + f"p99={np.percentile(tooks, 99):.05f}, "
+                    + "\n  "
+                    + " ".join(map("{:.05f}".format, tooks[:5]))
+                    + " .. "
+                    + " ".join(map("{:.05f}".format, tooks[-5:]))
                 )
+                tooks = []
 
             time.sleep(args.delay)
 

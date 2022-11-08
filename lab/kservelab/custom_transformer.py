@@ -2,8 +2,6 @@ import kserve
 from kserve import ModelServer, model_server
 from typing import Dict
 import logging
-import io
-import base64
 import argparse
 
 

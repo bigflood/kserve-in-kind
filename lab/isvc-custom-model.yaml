@@ -1,0 +1,40 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "custom-model"
+  namespace: "lab"
+  labels:
+    version: v1
+spec:
+  predictor:
+    minReplicas: 1
+    maxReplicas: 4
+    scaleTarget: 5
+    scaleMetric: rps
+    containers:
+    - image: localhost:5001/custom_model:0.1
+      name: kserve-container
+      readinessProbe:
+        failureThreshold: 5
+        initialDelaySeconds: 3
+        periodSeconds: 5
+        httpGet:
+          path: /v1/models/custom-model
+          port: 8080
+          scheme: HTTP
+  transformer:
+    minReplicas: 1
+    maxReplicas: 4
+    scaleTarget: 5
+    scaleMetric: rps
+    containers:
+    - image: localhost:5001/custom_transformer:0.1
+      name: kserve-container
+      readinessProbe:
+        failureThreshold: 5
+        initialDelaySeconds: 3
+        periodSeconds: 5
+        httpGet:
+          path: /v1/models/custom-model
+          port: 8080
+          scheme: HTTP
